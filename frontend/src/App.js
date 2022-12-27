@@ -1,11 +1,11 @@
 import React from "react";
-import {Switch, Route, Link} from "react-router-dom"
+import {Routes, Route, Link} from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import AddReview from "./components/add-review";
-import Restaurants from "./components/restaurants";
-import RestaurantsList from "./components/restaurants-list";
-import Login from "./components/login";
+import AddReview from "./components/AddReview.jsx";
+import Restaurants from "./components/Restaurants.jsx";
+import RestaurantsList from "./components/RestaurantsList.jsx";
+import Login from "./components/Login.jsx";
 
 function App() {
   const [user, setUser] = React.useState(null)
@@ -19,9 +19,10 @@ function App() {
   }
 
   return (
+    
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/restaurants" className="navbar-brand">
+        <a href="/" className="navbar-brand">
           Restaurant Reviews
         </a>
         <div className="navbar-nav mr-auto">
@@ -46,27 +47,19 @@ function App() {
       </nav>
 
       <div className="container mt-3">
-        <Switch>
-          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
-          <Route 
-            path="/restaurants/:id/review"
-            render={(props) => (
-              <AddReview {...props} user={user} />
-            )}
-          />
-          <Route 
-            path="/restaurants/:id"
-            render={(props) => (
-              <Restaurant {...props} user={user} />
-            )}
-          />
-          <Route 
-            path="/login"
-            render={(props) => (
-              <Login {...props} login={login} />
-            )}
-          />
-        </Switch>
+        <Routes>
+
+          <Route path="/" element={<RestaurantsList />}/>
+
+          <Route path="/restaurants"element={<RestaurantsList />}/>
+
+          <Route path="/restaurants/:id/review" element={<AddReview user={user} />}/>
+
+          <Route path="/restaurants/:id" element={<Restaurants user={user} />}/>
+
+          <Route path="/login" element={<Login login={login} />}/>
+          
+        </Routes>
       </div>
     </div>
   );

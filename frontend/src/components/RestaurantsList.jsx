@@ -2,7 +2,9 @@ import React from 'react'
 
 const RestaurantsList = () => {
     return (
-        <div>restaurants-list</div>
+        <div>
+            Hello World
+        </div>
     )
 }
 
