@@ -22,7 +22,7 @@ function App() {
     
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/" className="navbar-brand">
+        <a href="/restaurants" className="navbar-brand">
           Restaurant Reviews
         </a>
         <div className="navbar-nav mr-auto">
@@ -33,7 +33,7 @@ function App() {
           </li>
           <li className="nav-item" >
             { user ? (
-              <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
+              <a href='/restaurants' onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
                 Logout {user.name}
               </a>
             ) : (            
