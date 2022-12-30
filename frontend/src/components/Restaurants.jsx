@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import RestaurantDataService from '../services/restaurants'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const Restaurants = (props) => {
+
+    const {id} = useParams()
     
     const initialRestaurantState = {
         id: null,
@@ -27,8 +29,8 @@ const Restaurants = (props) => {
     }
 
     useEffect(() => {
-        getRestaurant(props.match.params.id)
-    }, [props.match.params.id])
+        getRestaurant(id)
+    }, [id])
 
     const deleteReview = (reviewId, index) => {
         RestaurantDataService.deleteReview(reviewId)
@@ -54,7 +56,7 @@ const Restaurants = (props) => {
                     <strong>Cuisine: </strong>{restaurant.cuisine}<br/>
                     <strong>Address: </strong>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.zipcode}
                 </p>
-                <Link to={"/restaurants/" + props.match.params.id + "/review"} className="btn btn-primary">
+                <Link to={"/restaurants/" + id+ "/review"} className="btn btn-primary">
                     Add Review
                 </Link>
                 <h4> Reviews </h4>
@@ -70,11 +72,11 @@ const Restaurants = (props) => {
                                     <strong>User: </strong>{review.name}<br/>
                                     <strong>Date: </strong>{review.date}
                                 </p>
-                                {props.user && props.user.id === review.user_id &&
+                                {props.user && id === review.user_id &&
                                     <div className="row">
                                         <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
                                         <Link to={{
-                                        pathname: "/restaurants/" + props.match.params.id + "/review",
+                                        pathname: "/restaurants/" + id + "/review",
                                         state: {
                                             currentReview: review
                                         }
