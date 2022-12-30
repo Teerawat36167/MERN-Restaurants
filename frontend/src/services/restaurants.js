@@ -1,6 +1,6 @@
 import http from "../http-common"
 
-export default new class RestaurantDataService {
+class RestaurantDataService {
     getAll(page = 0) {
         return http.get(`?page=${page}`)
     }
@@ -30,3 +30,5 @@ export default new class RestaurantDataService {
     }
 
 }
+
+export default new RestaurantDataService()
