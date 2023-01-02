@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {Routes, Route, Link} from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -8,9 +9,9 @@ import RestaurantsList from "./components/RestaurantsList.jsx";
 import Login from "./components/Login.jsx";
 
 function App() {
-  const [user, setUser] = React.useState(null)
+  const [user, setUser] = useState(null)
 
-  const login = async(user=null) => {
+  const login = async (user=null) => {
     setUser(user)
   }
 
@@ -51,7 +52,7 @@ function App() {
 
           <Route path="/" element={<RestaurantsList />}/>
 
-          <Route path="/restaurants"element={<RestaurantsList />}/>
+          <Route path="/restaurants" element={<RestaurantsList />}/>
 
           <Route path="/restaurants/:id/review" element={<AddReview user={user} />}/>
 
