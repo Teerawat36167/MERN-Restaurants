@@ -72,7 +72,7 @@ const Restaurants = (props) => {
                                     <strong>User: </strong>{review.name}<br/>
                                     <strong>Date: </strong>{review.date}
                                 </p>
-                                {props.user && props.user.id === review.user_id &&
+                                {props.user && props.user.id === review.user_id && props.user.name === review.name &&
                                     <div className="row">
                                         <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
                                         <Link to={"/restaurants/" + id + "/review"} state={{currentReview: review}} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>
