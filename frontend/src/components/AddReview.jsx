@@ -9,7 +9,7 @@ const AddReview = (props) => {
     let editing = false
 
     const location = useLocation()
-    const id = useParams()
+    const {id} = useParams()
 
     if (location.state && location.state.currentReview ) {
         editing = true;
